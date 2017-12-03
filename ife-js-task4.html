@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+div {
+	border: 1px solid;
+	text-align: center;
+}
+.text{background-color: #fff;}
+
+.box1 li{
+	font-size: 20px;
+	padding: 2px 10px 2px 10px;
+	background-color: red;
+	width:auto;
+	display: inline-block;
+	margin:10px;
+	cursor: pointer;
+}
+.box{
+	margin:auto;
+}
+</style>
+</head>
+<body>
+<div class="box">
+	<input type="text" id="text" class="text" />
+	<button class="left1" id="left1" >左侧入</button>
+	<button class="right1" id="right1">右侧入</button>
+	<button class="left2" id="left2">左侧出</button>
+	<button class="right2" id="right2">右侧出</button>
+	<div class= "show" id="show">
+		<ul class="box1" id="box1">
+		
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+ //创建新全局变量
+window.onload = function(){
+	var box = document.getElementById('box1');
+	var text = document.getElementById('text');
+	var left1 = document.getElementById('left1');
+	var left2 = document.getElementById('left2');
+	var right2 = document.getElementById('right2');
+	var right1 = document.getElementById('right1');
+	//增加数值
+	function insert(direction){
+	//验证
+		if(text.value.indexOf(" ")>=0 || text.value ==""){
+			alert("不能有空格且不能为空");
+			text.focus();
+		}else if(isNaN(text.value)){
+			alert('it must be a number');
+			text.focus();
+		}else{
+			var li = document.createElement('li');
+			li.innerHTML=text.value;
+			if(direction = "left"){
+				box.insertBefore(li,box.firstChild);
+			}else if (direction = "right"){
+				box.appendChild(li);
+			}
+		}
+	}
+	//删除数值
+	function dele(direction){
+		if(box.childNodes.length<=0){
+			alert("没有可以侧出的元素")
+			return false;
+		}else{
+			if(direction==="left"){//点击左侧出
+				alert("删除数字："+box.firstChild.innerHTML);
+				box.removeChild(box.firstChild);
+			}else{//点击右侧出
+				alert("删除数字："+box.lastChild.innerHTML);
+				box.removeChild(box.lastChild);
+			}
+		}
+	
+	}
+	//点击li删除啊
+		box.addEventListener('click', function(e) {//用addEventListener绑定单击事件。
+		box.removeChild(e.target);
+	});
+	left1.onclick = function(){insert("left");};
+	right1.onclick = function(){insert("right");};
+	left2.onclick = function(){dele("left");};
+	right2.onclick = function(){dele("right");};
+	
+	//target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口。 
+//语法 event.target event 无法识别。
+}
+
+</script>
+</body>
+</html>
