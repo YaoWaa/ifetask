@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+      #root,#node-1,#node-2,#node-3,#node-4{
+            border:1px solid black;
+            padding: 5px;
+            margin: 5px;
+            float: left;
+            box-sizing: content-box;
+        }
+        #root{
+            width: 800px;
+            height: 600px;
+        }
+        #node-1{
+            width: 700px;
+            height: 250px;
+        }
+        #node-2{
+            width: 320px;
+            height: 200px;
+        }
+        #node-3{
+            width: 120px;
+            height: 150px;
+        }
+        #node-4{
+            width: 60px;
+            height: 30px;
+        }
+	</style>
+</head>
+<body>
+<div class="root" id="root">root
+	
+	<div id="node-1">1
+		<div id="node-2">2
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+		</div>
+	
+	
+		<div id="node-2">2
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+		</div>
+	</div>
+	<div id="node-1">1
+		<div id="node-2">2
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+		</div>
+	
+	
+		<div id="node-2">2
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+			<div id="node-3">3
+				<div id="node-4">4</div>
+				<div id="node-4">4</div>
+			</div>
+		</div>
+	</div>
+</div>
+<button id="btn1">前序</button>
+<button id="btn2">中序</button>
+<button id="btn3">后序</button>
+	<script type="text/javascript" >
+ 	var treeRoots=document.getElementById('root');
+	var	btn1 = document.getElementById('btn1'),
+		btn2 = document.getElementById('btn2'),
+		btn3 = document.getElementById('btn3'),
+		timer=0;
+btn1.addEventListener("click",function(){
+	
+	reset(treeRoots);
+	preOrder(treeRoots);
+},false);
+btn2.addEventListener('click',function(){
+	reset(treeRoots);
+	inOrder(treeRoots);
+	
+},false);
+btn3.addEventListener('click',function(){
+	reset(treeRoots);
+	
+	lastOrder(treeRoots);
+},false);
+ function preOrder(treeRoots){
+ 	if(!(treeRoots==null)){
+ 	show(treeRoots);
+ 	preOrder(treeRoots.firstElementChild);
+ 	preOrder(treeRoots.lastElementChild);
+ }
+}
+ function inOrder(treeRoots){
+ 	if(!(treeRoots==null)){
+ 	inOrder(treeRoots.firstElementChild);
+ 	show(treeRoots);
+ 	inOrder(treeRoots.lastElementChild);
+ }
+}
+ function lastOrder(treeRoots){
+ 	if(!(treeRoots==null)){
+ 	lastOrder(treeRoots.firstElementChild);
+ 	lastOrder(treeRoots.lastElementChild);
+ 	show(treeRoots);
+ }
+}
+ function show(node){
+ 	node.style.backgroundColor="#ffffff";
+ 	setTimeout(function(){
+ 		node.style.backgroundColor="#232323";
+ 	},timer+=200);
+ 	setTimeout(function(){
+ 		node.style.backgroundColor="#ffffff";
+ 	},timer+=200);
+ }
+ function reset(node){
+ 	clearTimeout(timer);
+
+ 	node.style.backgroundColor="#ffffff";
+ 	return;
+ }
+	</script>
+</body>
+</html>
