@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Document</title>
+<style type="text/css">
+div{
+	border: 1px solid;
+	margin:5px;
+	padding: 5px;
+	float: left;
+	box-sizing: border-box;
+}
+.root{
+	width:1000px;
+	height: 500px;
+}
+.guangdong,.beijing{
+	width:800px;
+	height: 200px;
+}
+.guangzhou,.huizhou{
+	width:300px;
+	height: 180px;
+}
+.tianhe,.haizhu,.yuexiu{
+	width:200px;
+	height:50px;
+}
+.boluo,.huidong{
+	width: 200px;
+	height: 50px;
+}
+.chaoyang,.baidian{
+	width: 300px;
+	height: 150px;
+}
+#text{
+	background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+<div class="root" id="root">root
+	<div class="guangdong">guangdong
+		<div class="guangzhou">guangzhou
+			<div class="tianhe">tianhe</div>
+			<div class="haizhu">haizhu</div>
+			<div class="yuexiu">yuexiu</div>
+		</div>
+
+		<div class="huizhou">huizhou
+			<div class="boluo">boluo</div>
+			<div class="huidong">huidong</div>
+		</div>
+	</div>
+	<div class="beijing">beijing
+		<div class="chaoyang">chaoyang</div>
+		<div class="baidian">baidian</div>
+	</div>
+</div>	
+<input id="text">
+<button id="button">check</button>
+<script type="text/javascript" src="task8.js"></script>
+</body>
+</html>
